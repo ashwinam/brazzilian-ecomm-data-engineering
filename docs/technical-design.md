@@ -4,6 +4,9 @@
 Olist Data engineering project, have the olist ecommerce dataset that includes: customers, orders, order items, payments, sellers, reviews, products and much more, project is asking to create the reliable ETL pipeline 
 
 ## 2) Business Requirements:
+Design and build maintainable data pipeline that takes the olist dataset and makes validated, consistently structured data available for the analytics and other teams.
+
+The solution should be repeatable, observable, and safe to run more than once. Another engineer should be able to understand, configure, run, test, and extend it.
 
 ## 3) Source Data Understanding:
 
