@@ -52,15 +52,4 @@ The solution should be repeatable, observable, and safe to run more than once. A
 		1) E-commerce is the place where two parties made some transactions, it can be anything example for goods, services etc
 		2) Generally, Customer place an order, orders going to have multiple items and then customer make payment of that order, and seller send the order to the customers
 ## 4) Proposed Architecture:
-
-## 5) Data Processing Strategy:
-
-## 6) Data Quality Strategy:
-
-## 7) Reliability & Error Handling:
-
-## 8) Testing Strategy:
-
-## 9) Assumptions & constraints:
-
-## 10) Open Questions:
+![Olist Architecture Diagram](images/architecture.png)
