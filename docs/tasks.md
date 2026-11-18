@@ -17,3 +17,11 @@
 - [x] Read each CSV using your existing extract() function.
 - [x] Keep the resulting DataFrames accessible.
 - [x] Display each dataset's name and shape.
+
+# Task 03 - Inspect the extracted datasets
+
+- [x] return the dataset name
+- [x] Shape - number of rows and columns
+- [x] column names
+- [x] Data Types, data types of each column
+- [x] Missing values, Count of missing column in each column 
