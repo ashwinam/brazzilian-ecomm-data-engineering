@@ -25,3 +25,9 @@
 - [x] column names
 - [x] Data Types, data types of each column
 - [x] Missing values, Count of missing column in each column 
+
+# Task 04 - Investigate missing values
+
+- [x] Identify which dataset contains missing values
+- [x] Identify columns with missing values
+- [x] Calculate the missing values percentage

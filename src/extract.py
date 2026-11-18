@@ -32,16 +32,29 @@ if __name__ == '__main__':
 
     # Iterating csv file paths and pass it to extract function for dataframes
     for path in dataset_directory.glob(pattern='*.csv'):
-
         data_df = extract(file_path=path)
-
         # It store the dataframes of each csv files
         dataframes[path.stem] = data_df
 
     # inspecting datasets
     for key, value in dataframes.items():
-        print(f"Dataset name: {key}")
-        print(value.shape)
-        print(value.columns)
-        print(value.dtypes)
-        print(value.isnull().sum())
+        # Investigating missing values
+
+        # Getting datasets that has the null values
+        # getting total column values for calculating total rows and columns
+        column_with_nulls = value.columns[value.isna().any()].tolist()
+        if column_with_nulls:
+            print(key) # dataset name
+            # Getting columns that has null values
+            for column_name in column_with_nulls:
+                # Calculating percentage for null values
+                null_counts = value[column_name].isna().sum()
+                total_count = value.shape[0]
+                null_value_percentage = (null_counts / total_count) * 100
+                print(
+                    f"{column_name}: {null_counts} missing values "
+                    f"({null_value_percentage:.2f}%)"
+                )
+
+            print() # for new line
+
