@@ -21,7 +21,8 @@ if __name__ == '__main__':
     # Checking file path is exists or not
     customer_data_filepath = pathlib.Path('datasets/brazilian-ecommerce/olist_customers_dataset.csv')
 
-    assert customer_data_filepath.is_file()
+    if not customer_data_filepath.is_file():
+        raise FileNotFoundError(f"File not found: {customer_data_filepath}")
 
     # Collecting Customer DataFrame
     customer_df = extract(file_path=customer_data_filepath)
