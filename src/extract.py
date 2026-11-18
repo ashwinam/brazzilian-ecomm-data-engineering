@@ -1,7 +1,7 @@
 import pathlib
 import pandas as pd
 
-def extract(file_path: str):
+def extract(file_path: pathlib.Path | str) -> pd.DataFrame:
     """Extract the csv file and return the pandas dataframe
 
     Args:
@@ -12,7 +12,9 @@ def extract(file_path: str):
     
     example:
         cust = extract(file_path='datasets/customers.csv')
+        print(customer_df.shape)
 
+        (99441, 5)
     """
 
     return pd.read_csv(file_path)
