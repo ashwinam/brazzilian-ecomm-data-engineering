@@ -26,10 +26,15 @@ if __name__ == '__main__':
     if not dataset_directory.is_dir():
         raise NotADirectoryError(f"Directory not found: {dataset_directory}")
 
+    # for storing all dataframes
+    dataframes = {}
+
     # Iterating csv file paths and pass it to extract function for dataframes
     for path in dataset_directory.glob(pattern='*.csv'):
-
+        
         data_df = extract(file_path=path)
-        print(path.name)
-        print(data_df.shape)
-  
+
+        # It store the dataframes of each csv files
+        dataframes[path.stem] = data_df
+
+    print(dataframes)
