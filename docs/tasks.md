@@ -1,11 +1,11 @@
 # Task 01
 
 - [x] Create extract python file
-- [ ] Start with one Data File
-- [ ] Locate the csv file using its path
-- [ ] Check whether the file exists
-- [ ] Read it using pandas
-- [ ] Display:
+- [x] Start with one Data File
+- [x] Locate the csv file using its path
+- [x] Check whether the file exists
+- [x] Read it using pandas
+- [x] Display:
   - First five records
   - Number of rows and columns
   - Column names
