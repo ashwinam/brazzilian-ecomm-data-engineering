@@ -20,15 +20,16 @@ def extract(file_path: pathlib.Path | str) -> pd.DataFrame:
     return pd.read_csv(file_path)
 
 if __name__ == '__main__':
-    # Checking file path is exists or not
-    customer_data_filepath = pathlib.Path('datasets/brazilian-ecommerce/olist_customers_dataset.csv')
+    # Checking folder path is exists or not
+    dataset_directory = pathlib.Path('datasets/brazilian-ecommerce/')
 
-    if not customer_data_filepath.is_file():
-        raise FileNotFoundError(f"File not found: {customer_data_filepath}")
+    if not dataset_directory.is_dir():
+        raise NotADirectoryError(f"Directory not found: {dataset_directory}")
 
-    # Collecting Customer DataFrame
-    customer_df = extract(file_path=customer_data_filepath)
-    print(customer_df.head()) 
-    print(customer_df.shape)
-    print(list(customer_df))
-    print(customer_df.dtypes)
+    # Iterating csv file paths and pass it to extract function for dataframes
+    for path in dataset_directory.glob(pattern='*.csv'):
+
+        data_df = extract(file_path=path)
+        print(path.name)
+        print(data_df.shape)
+  

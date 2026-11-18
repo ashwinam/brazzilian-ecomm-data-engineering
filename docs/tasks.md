@@ -10,3 +10,10 @@
   - Number of rows and columns
   - Column names
   - Data types
+
+# Task 02 — Extract all Olist datasets
+
+- [x] Discover all CSV files inside datasets/brazilian-ecommerce/
+- [x] Read each CSV using your existing extract() function.
+- [x] Keep the resulting DataFrames accessible.
+- [x] Display each dataset's name and shape.
