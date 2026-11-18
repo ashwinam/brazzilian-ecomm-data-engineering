@@ -1,5 +1,5 @@
-import pandas as pd
 import pathlib
+import pandas as pd
 
 def extract(file_path: str):
     """Extract the csv file and return the pandas dataframe
