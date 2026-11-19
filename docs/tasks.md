@@ -31,3 +31,23 @@
 - [x] Identify which dataset contains missing values
 - [x] Identify columns with missing values
 - [x] Calculate the missing values percentage
+
+# Task 05 — Investigate missing order dates
+Let's investigate `olist_orders_dataset` first.
+
+- [x] Load the orders DataFrame from your existing dictionary.
+- [x] Find the rows where order_delivered_customer_date is missing.
+- [x] Display these columns:
+        - order_id
+        - customer_id
+        - order_status
+        - order_purchase_timestamp
+        - order_delivered_carrier_date
+        - order_delivered_customer_date
+- [x] Count how many records belong to each order_status among these rows.
+
+## Further Investigation in task 05
+- [x] Filter only records where `order_status` == 'delivered'
+- [x] Display all six columns you selected earlier.
+- [x] Check whether `order_delivered_carrier_date` is also missing for these eight records.
+- [x] Check whether order_approved_at is missing for them.
