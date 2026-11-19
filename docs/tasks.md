@@ -51,3 +51,17 @@ Let's investigate `olist_orders_dataset` first.
 - [x] Display all six columns you selected earlier.
 - [x] Check whether `order_delivered_carrier_date` is also missing for these eight records.
 - [x] Check whether order_approved_at is missing for them.
+
+# Task 06 - Investigate Product Information
+Let's move to olist_products_dataset.
+
+- [x] load the `olist_products_dataset`
+- [x] display these columns
+      - product_category_name
+      - product_name_lenght
+      - product_description_lenght
+      - product_photos_qty
+- [x] Filter products where product_category_name is missing.
+- [x] Check whether the other three columns are also missing in those same records.
+- [x] Count how many products have all four fields missing.
+- [x] Check whether product_id is missing in any of these records.
