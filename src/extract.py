@@ -12,7 +12,7 @@ def extract(file_path: pathlib.Path | str) -> pd.DataFrame:
         pd.DataFrame object
 
     example:
-        cust = extract(file_path='datasets/customers.csv')
+        customer_df = extract(file_path='datasets/customers.csv')
         print(customer_df.shape)
         (99441, 5)
     """
@@ -36,5 +36,4 @@ for path in dataset_directory.glob(pattern='*.csv'):
     dataframes[path.stem] = data_df
 
 if __name__ == '__main__':
-
     print(dataframes)
