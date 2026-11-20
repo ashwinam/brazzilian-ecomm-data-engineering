@@ -69,3 +69,19 @@ Let's move to olist_products_dataset.
 # Task 07 - Transform the Orders dataset
 - [x] Investigate the current data types of the order dataset(timestamps)
 - [x] Determine what needs to change before storing it in postgresql
+
+# Task 08 — Investigate order timestamp consistency
+
+### Part 1 — Investigate chronological consistency
+- [x] Approval timestamp is earlier than purchase timestamp.
+- [x] Carrier delivery timestamp is earlier than approval timestamp.
+- [x] Customer delivery timestamp is earlier than carrier delivery timestamp.
+- [x] Customer delivery timestamp is earlier than purchase timestamp.
+
+### Part 2 — Investigate estimated delivery
+- [x] Estimated delivery date is earlier than purchase date.
+- [x] Actual customer delivery is later than the estimated delivery date.
+
+### Part 3 — Report your findings
+- [ ] Number of affected records.
+- [ ] A few sample records (order_id and relevant timestamps).

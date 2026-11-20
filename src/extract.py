@@ -36,4 +36,4 @@ for path in dataset_directory.glob(pattern='*.csv'):
     dataframes[path.stem] = data_df
 
 if __name__ == '__main__':
-    print(dataframes)
+    print(dataframes['olist_orders_dataset'].head())
