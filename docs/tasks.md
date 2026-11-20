@@ -112,7 +112,7 @@ Let's move to olist_products_dataset.
 - [x] Correct data types
     - order_status should be a category.
     - All five timestamp columns should have a datetime dtype.
-- [ ] Missing timestamps
+- [x] Missing timestamps
     - Create a small test DataFrame containing a missing timestamp.
     - Verify that it remains NaT after transformation.
 - [ ] Row and column counts
