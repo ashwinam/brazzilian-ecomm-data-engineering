@@ -103,3 +103,17 @@ Let's move to olist_products_dataset.
       - The original DataFrame remains unchanged.
       - The number of rows remains the same.
       - Missing timestamp counts remain unchanged.
+
+# Task 10 - Test transform_order functionality
+
+- [x] Original DataFrame remains unchanged
+    - Call transform_orders().
+    - Verify that the original DataFrame has not been modified.
+- [ ] Correct data types
+    - order_status should be a category.
+    - All five timestamp columns should have a datetime dtype.
+- [ ] Missing timestamps
+    - Create a small test DataFrame containing a missing timestamp.
+    - Verify that it remains NaT after transformation.
+- [ ] Row and column counts
+    - Verify that transformation doesn't unexpectedly change the DataFrame's shape.
