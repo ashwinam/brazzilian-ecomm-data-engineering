@@ -109,7 +109,7 @@ Let's move to olist_products_dataset.
 - [x] Original DataFrame remains unchanged
     - Call transform_orders().
     - Verify that the original DataFrame has not been modified.
-- [ ] Correct data types
+- [x] Correct data types
     - order_status should be a category.
     - All five timestamp columns should have a datetime dtype.
 - [ ] Missing timestamps

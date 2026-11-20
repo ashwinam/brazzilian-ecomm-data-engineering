@@ -69,9 +69,16 @@ def test_transform_checking_original_df(sample_transform_df):
     # AAA (Arrange, Act, Assert)
     # Arrange is the fixture
     # Act
-    print('Original df \n', sample_transform_df.dtypes)
     copied_df = transform_orders(sample_transform_df)
-    print('Copied df \n', copied_df.dtypes)
     # Assert
     assert not copied_df.dtypes.equals(sample_transform_df.dtypes)
 
+def test_after_transformed_datatypes(sample_transform_df):
+    result_df = transform_orders(sample_transform_df)
+
+    assert result_df['order_status'].dtype == 'category' and \
+    result_df['order_purchase_timestamp'].dtype == 'datetime64[us]' and \
+    result_df['order_approved_at'].dtype == 'datetime64[us]' and \
+    result_df['order_delivered_carrier_date'].dtype == 'datetime64[us]' and \
+    result_df['order_delivered_customer_date'].dtype == 'datetime64[us]' and \
+    result_df['order_estimated_delivery_date'].dtype == 'datetime64[us]'
