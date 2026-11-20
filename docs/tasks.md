@@ -115,5 +115,5 @@ Let's move to olist_products_dataset.
 - [x] Missing timestamps
     - Create a small test DataFrame containing a missing timestamp.
     - Verify that it remains NaT after transformation.
-- [ ] Row and column counts
+- [x] Row and column counts
     - Verify that transformation doesn't unexpectedly change the DataFrame's shape.
