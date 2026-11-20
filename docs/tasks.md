@@ -85,3 +85,21 @@ Let's move to olist_products_dataset.
 ### Part 3 — Report your findings
 - [x] Number of affected records.
 - [x] A few sample records (order_id and relevant timestamps).
+
+# Task 09 — Create the Orders transformation module
+
+- [x] create a transform.py file
+- [x] create a function for orders transform_orders(orders_df)
+- [x] give the appropriate data types to those columns
+    - Requirements
+      1. Accept a Pandas DataFrame as input.
+      2. Return a transformed DataFrame.
+      3. Do not modify the original input DataFrame.
+      4. Preserve missing timestamp values.
+      5. Keep the function reusable. It should work regardless of which CSV file path was used to extract the data.
+- [x] Import your function into 01_data_exploration.ipynb and test it.
+    - Verify:
+      - The returned DataFrame has the expected dtypes.
+      - The original DataFrame remains unchanged.
+      - The number of rows remains the same.
+      - Missing timestamp counts remain unchanged.
