@@ -83,5 +83,5 @@ Let's move to olist_products_dataset.
 - [x] Actual customer delivery is later than the estimated delivery date.
 
 ### Part 3 — Report your findings
-- [ ] Number of affected records.
-- [ ] A few sample records (order_id and relevant timestamps).
+- [x] Number of affected records.
+- [x] A few sample records (order_id and relevant timestamps).
