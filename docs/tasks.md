@@ -65,3 +65,7 @@ Let's move to olist_products_dataset.
 - [x] Check whether the other three columns are also missing in those same records.
 - [x] Count how many products have all four fields missing.
 - [x] Check whether product_id is missing in any of these records.
+
+# Task 07 - Transform the Orders dataset
+- [x] Investigate the current data types of the order dataset(timestamps)
+- [x] Determine what needs to change before storing it in postgresql
