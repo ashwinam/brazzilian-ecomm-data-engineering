@@ -1,6 +1,6 @@
-from tests.test_data import sample_orders_df, sample_missing_timestamp_orders_df
 import pandas as pd
-from src.transform import transform_orders
+from src.transform import transform_orders, transform_order_items
+from tests.test_data import sample_orders_df, sample_missing_timestamp_orders_df, sample_order_items_df, sample_missing_timestamps_order_items_df
 
 # Orders DataFrame Unit tests
 def test_transform_does_not_modify_original_df(sample_orders_df):
@@ -21,7 +21,7 @@ def test_after_transformed_datatypes(sample_orders_df):
     pd.api.types.is_datetime64_any_dtype(result_df['order_delivered_customer_date'])  and \
     pd.api.types.is_datetime64_any_dtype(result_df['order_estimated_delivery_date'])
 
-def test_missing_timestamps(sample_missing_timestamp_orders_df):
+def test_missing_timestamps_orders_df(sample_missing_timestamp_orders_df):
 
     missing_timestamp_df = transform_orders(sample_missing_timestamp_orders_df)
 
@@ -32,7 +32,34 @@ def test_missing_timestamps(sample_missing_timestamp_orders_df):
     missing_timestamp_df['order_delivered_customer_date'].isna().sum() == 2 and \
     missing_timestamp_df['order_estimated_delivery_date'].isna().sum() == 2
 
-def test_rows_and_columns_counts_after_transformation(sample_orders_df):
+def test_rows_and_columns_counts_after_transformation_orders_df(sample_orders_df):
     result_df = transform_orders(sample_orders_df)
 
     assert result_df.shape == sample_orders_df.shape
+
+# Order Items Unit Test
+def test_order_items_original_df_unchanged(sample_order_items_df):
+    # Arrange
+    original_df = sample_order_items_df.copy(deep=True)
+
+    # Act
+    transform_order_items(sample_order_items_df)
+
+    # Assert
+    pd.testing.assert_frame_equal(sample_order_items_df, original_df)
+
+def test_shipping_limit_date_datatype_to_datetime_datatype(sample_order_items_df):
+    result_df = transform_order_items(sample_order_items_df)
+
+    assert pd.api.types.is_datetime64_any_dtype(result_df['shipping_limit_date'])
+
+def test_missing_timestamp_order_items_df(sample_missing_timestamps_order_items_df):
+    result_df = transform_order_items(sample_missing_timestamps_order_items_df)
+
+    assert result_df['shipping_limit_date'].isna().sum() == 2
+
+
+def test_rows_and_columns_counts_after_transformation_order_items_df(sample_order_items_df):
+    result_df = transform_order_items(sample_order_items_df)
+
+    assert result_df.shape == sample_order_items_df.shape

@@ -138,3 +138,9 @@ Let's move to olist_products_dataset.
 - [x] Create a copy rather than modifying the original.
 - [x] Convert `shipping_limit_date` to datetime.
 - [x] returned transformed dataframe.
+
+### added tasks to task no 12 - Unit Test
+- [x] Original DataFrame remains unchanged.
+- [x] `shipping_limit_date` becomes a datetime dtype.
+- [x] Existing missing timestamps remain missing.
+- [ ] Row and column counts remain unchanged.
