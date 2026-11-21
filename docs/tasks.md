@@ -132,4 +132,9 @@ Let's move to olist_products_dataset.
     - [x] Transforms the orders DataFrame.
     - [x] Prints the original and transformed shapes and dtypes.
 
-    
+# Task 12 - Build transform_order_items()
+
+- [x] create `transform_order_items` function
+- [x] Create a copy rather than modifying the original.
+- [x] Convert `shipping_limit_date` to datetime.
+- [x] returned transformed dataframe.
