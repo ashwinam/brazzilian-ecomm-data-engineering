@@ -144,3 +144,18 @@ Let's move to olist_products_dataset.
 - [x] `shipping_limit_date` becomes a datetime dtype.
 - [x] Existing missing timestamps remain missing.
 - [ ] Row and column counts remain unchanged.
+
+# Task 13 — Investigate the products dataset
+
+- [x] Data types of every column.
+- [x] Missing values in every column.
+- [x] Duplicate rows.
+- [x] Missing product_id values.
+- [x] Zero or negative values in:
+      - product_name_lenght
+      - product_description_lenght
+      - product_photos_qty
+      - product_weight_g
+      - product_length_cm
+      - product_height_cm
+      - product_width_cm
