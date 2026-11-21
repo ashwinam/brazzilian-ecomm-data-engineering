@@ -3,7 +3,8 @@ from transform import transform_orders
 import pathlib as pl
 
 def main():
-    """Main pipeline function that joins the extraction and transformation functionality
+    """
+    Orchestrates the extraction and transformation pipeline.
     """
     # creating path object and pass it to extract all datasets
     dataset_directory = pl.Path('datasets/brazilian-ecommerce/')
@@ -14,11 +15,8 @@ def main():
     transformed_orders = transform_orders(orders_df)
 
     # validating outputs
-    print(orders_df.shape)
-    print(orders_df.dtypes)
-    print()
-    print(transformed_orders.shape)
-    print(transformed_orders.dtypes)
+    assert orders_df.shape == transformed_orders.shape
+    assert orders_df is not transformed_orders
 
 
 if __name__ == '__main__':
