@@ -159,3 +159,10 @@ Let's move to olist_products_dataset.
       - product_length_cm
       - product_height_cm
       - product_width_cm
+
+# Task 14 — Review the remaining datasets
+
+- [x] Data types of all columns.
+- [x] Missing values.
+- [x] Duplicate rows.
+- [x] Zero or negative values in payment_sequential, payment_installments, and payment_value.
