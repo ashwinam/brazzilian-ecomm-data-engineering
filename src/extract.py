@@ -31,6 +31,7 @@ def extract_all_datasets(directory_path: pathlib.Path) -> dict:
     Returns:
         dict: returns dict of dataframes extracted from directiry
     """
+    # Checking folder path is exists or not
     if not directory_path.is_dir():
         raise NotADirectoryError(f"Directory not found: {directory_path}")
 
@@ -46,7 +47,6 @@ def extract_all_datasets(directory_path: pathlib.Path) -> dict:
     return dataframes
 
 if __name__ == '__main__':
-    # Checking folder path is exists or not
     dataset_directory = pathlib.Path('datasets/brazilian-ecommerce/')
     dataframes = extract_all_datasets(dataset_directory)
     print(dataframes['olist_orders_dataset'].head())

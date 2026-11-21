@@ -124,12 +124,12 @@ Let's move to olist_products_dataset.
 - [x] convert dataframe dictionary extraction into a function
 
 ### Part 2 — Integrate the modules
-- [ ] Create a small script, perhaps src/main.py
-    - [ ] Imports extract_all_datasets() from extract.py.
-    - [ ] Imports transform_orders() from transform.py.
-    - [ ] Extracts all CSV datasets into a dictionary.
-    - [ ] Retrieves olist_orders_dataset from that dictionary.
-    - [ ] Transforms the orders DataFrame.
-    - [ ] Prints the original and transformed shapes and dtypes.
+- [x] Create a small script, perhaps src/main.py
+    - [x] Imports extract_all_datasets() from extract.py.
+    - [x] Imports transform_orders() from transform.py.
+    - [x] Extracts all CSV datasets into a dictionary.
+    - [x] Retrieves olist_orders_dataset from that dictionary.
+    - [x] Transforms the orders DataFrame.
+    - [x] Prints the original and transformed shapes and dtypes.
 
     
