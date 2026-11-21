@@ -175,3 +175,16 @@ Let's move to olist_products_dataset.
 - [x] Convert review_answer_timestamp to datetime.
 - [x] Preserve missing values.
 - [x] Return the transformed DataFrame.
+
+# Task 16 - Build validate orders
+
+- [x] Check NULL values
+    - order_id must not contain NULL values.
+    - customer_id must not contain NULL values.
+- [x] Check uniqueness
+    - order_id must be unique.
+    - Identify duplicate order IDs.
+- [x] Validate order status
+    - identify any unexpected statuses
+- [x] return validation result
+    - create a dictionary and return the results
