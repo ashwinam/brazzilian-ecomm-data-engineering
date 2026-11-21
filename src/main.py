@@ -1,5 +1,5 @@
 from extract import extract_all_datasets
-from transform import transform_orders, transform_order_items
+from transform import transform_orders, transform_order_items, transform_reviews
 import pathlib as pl
 
 def main():
@@ -18,6 +18,10 @@ def main():
     order_items_df = dataframes['olist_order_items_dataset']
     transformed_order_items = transform_order_items(order_items_df)
 
+    # transform reviews dataframe
+    reviews_df = dataframes['olist_order_reviews_dataset']
+    transformed_reviews_df = transform_reviews(reviews_df)
+
     # validating outputs
     # orders
     assert orders_df.shape == transformed_orders.shape
@@ -25,6 +29,9 @@ def main():
     # order items
     assert order_items_df.shape == transformed_order_items.shape
     assert order_items_df is not transformed_order_items
+    # reviews items
+    assert reviews_df.shape == transformed_reviews_df.shape
+    assert reviews_df is not transformed_reviews_df
 
 if __name__ == '__main__':
     main()
