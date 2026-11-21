@@ -1,6 +1,6 @@
 import pandas as pd
-from src.transform import transform_orders, transform_order_items
-from tests.test_data import sample_orders_df, sample_missing_timestamp_orders_df, sample_order_items_df, sample_missing_timestamps_order_items_df
+from src.transform import transform_orders, transform_order_items, transform_reviews
+from tests.test_data import sample_orders_df, sample_missing_timestamp_orders_df, sample_order_items_df, sample_missing_timestamps_order_items_df, sample_review_df,sample_missing_timestamp_review_df
 
 # Orders DataFrame Unit tests
 def test_transform_does_not_modify_original_df(sample_orders_df):
@@ -58,8 +58,36 @@ def test_missing_timestamp_order_items_df(sample_missing_timestamps_order_items_
 
     assert result_df['shipping_limit_date'].isna().sum() == 2
 
-
 def test_rows_and_columns_counts_after_transformation_order_items_df(sample_order_items_df):
     result_df = transform_order_items(sample_order_items_df)
 
     assert result_df.shape == sample_order_items_df.shape
+
+# Reviews Unit Test
+def test_reviews_original_df_unchanged(sample_review_df):
+    # Arrange
+    original_df = sample_review_df.copy(deep=True)
+
+    # Act
+    transform_reviews(sample_review_df)
+
+    # Assert
+    pd.testing.assert_frame_equal(sample_review_df, original_df)
+
+def test_creation_date_and_answer_timestamp_check_datatype_datetime(sample_review_df):
+    result_df = transform_reviews(sample_review_df)
+
+    assert pd.api.types.is_datetime64_any_dtype(result_df['review_creation_date']) and \
+    pd.api.types.is_datetime64_any_dtype(result_df['review_answer_timestamp'])
+
+def test_missing_timestamp_reviews_df(sample_missing_timestamp_review_df):
+    result_df = transform_reviews(sample_missing_timestamp_review_df)
+
+    assert result_df['review_creation_date'].isna().sum() == 1 and \
+    result_df['review_answer_timestamp'].isna().sum() == 2
+
+
+def test_rows_and_columns_counts_after_transformation_reviews_df(sample_review_df):
+    result_df = transform_reviews(sample_review_df)
+
+    assert result_df.shape == sample_review_df.shape

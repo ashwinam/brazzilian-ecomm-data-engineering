@@ -1,6 +1,7 @@
 import pytest
 import pandas as pd
 
+# Orders
 @pytest.fixture
 def sample_orders_df():
     data = {
@@ -127,6 +128,7 @@ def sample_missing_timestamp_orders_df():
     sample_missing_timestamp_df = pd.DataFrame(data)
     return sample_missing_timestamp_df
 
+# Order Items
 @pytest.fixture
 def sample_order_items_df():
     data = {
@@ -216,3 +218,100 @@ def sample_missing_timestamps_order_items_df():
 
     order_items_df = pd.DataFrame(data)
     return order_items_df
+
+# Reviews
+@pytest.fixture
+def sample_review_df():
+    data = {
+        'review_id': [
+            '7bc2406110b926393aa56f80a40eba40',
+            '80e641a11e56f04c1ad469d5645fdfde',
+            '228ce5500dc1d8e020d8d1322874b6f0',
+            'e64fb393e7b32834bb789ff8bb30750e',
+            'f7c4243c7fe1938f181bec41a392bdeb'
+        ],
+        'order_id': [
+            '73fc7af87114b39712e6da79b0a377eb',
+            'a548910a1c6147796b98fdf73dbeba33',
+            'f9e4b658b201a9f2ecdecbb34bed034b',
+            '658677c97b385a9be170737859d3511b',
+            '8e6bfb81e283fa7e4f11123a3fb894f1'
+        ],
+        'review_score': [
+            4, 5, 5, 5, 5
+        ],
+        'review_comment_title': [
+            None, None, None, None, None
+        ],
+        'review_comment_message': [
+            None, None, None, 
+            'Recebi bem antes do prazo estipulado.',
+            'Parabéns lojas lannister adorei comprar pela I...'
+        ],
+        'review_creation_date': [
+            '2018-01-18 00:00:00',
+            '2018-03-10 00:00:00',
+            '2018-02-17 00:00:00',
+            '2017-04-21 00:00:00',
+            '2018-03-01 00:00:00'
+        ],
+        'review_answer_timestamp': [
+            '2018-01-18 21:46:59',
+            '2018-03-11 03:05:13',
+            '2018-02-18 14:36:24',
+            '2017-04-21 22:02:06',
+            '2018-03-02 10:26:53'
+        ]
+    }
+
+    sample_df = pd.DataFrame(data)
+
+    return sample_df
+
+@pytest.fixture
+def sample_missing_timestamp_review_df():
+    data = {
+        'review_id': [
+            '7bc2406110b926393aa56f80a40eba40',
+            '80e641a11e56f04c1ad469d5645fdfde',
+            '228ce5500dc1d8e020d8d1322874b6f0',
+            'e64fb393e7b32834bb789ff8bb30750e',
+            'f7c4243c7fe1938f181bec41a392bdeb'
+        ],
+        'order_id': [
+            '73fc7af87114b39712e6da79b0a377eb',
+            'a548910a1c6147796b98fdf73dbeba33',
+            'f9e4b658b201a9f2ecdecbb34bed034b',
+            '658677c97b385a9be170737859d3511b',
+            '8e6bfb81e283fa7e4f11123a3fb894f1'
+        ],
+        'review_score': [
+            4, 5, 5, 5, 5
+        ],
+        'review_comment_title': [
+            None, None, None, None, None
+        ],
+        'review_comment_message': [
+            None, None, None, 
+            'Recebi bem antes do prazo estipulado.',
+            'Parabéns lojas lannister adorei comprar pela I...'
+        ],
+        'review_creation_date': [
+            '2018-01-18 00:00:00',
+            None,
+            '2018-02-17 00:00:00',
+            '2017-04-21 00:00:00',
+            '2018-03-01 00:00:00'
+        ],
+        'review_answer_timestamp': [
+            '2018-01-18 21:46:59',
+            '2018-03-11 03:05:13',
+            '2018-02-18 14:36:24',
+            None,
+            None
+        ]
+    }
+
+    sample_df = pd.DataFrame(data)
+
+    return sample_df
