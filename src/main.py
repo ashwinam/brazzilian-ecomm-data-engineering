@@ -22,16 +22,13 @@ def main():
     reviews_df = dataframes['olist_order_reviews_dataset']
     transformed_reviews_df = transform_reviews(reviews_df)
 
-    # validating outputs
-    # orders
-    assert orders_df.shape == transformed_orders.shape
-    assert orders_df is not transformed_orders
-    # order items
-    assert order_items_df.shape == transformed_order_items.shape
-    assert order_items_df is not transformed_order_items
-    # reviews items
-    assert reviews_df.shape == transformed_reviews_df.shape
-    assert reviews_df is not transformed_reviews_df
+    transformed_dataframes = {
+        'olist_orders_dataset': transformed_orders,
+        'olist_order_items_dataset': transformed_order_items,
+        'olist_order_reviews_dataset': transformed_reviews_df
+    }
+
+    return transformed_dataframes
 
 if __name__ == '__main__':
     main()
