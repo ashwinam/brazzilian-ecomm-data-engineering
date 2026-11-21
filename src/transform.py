@@ -47,4 +47,26 @@ def transform_order_items(order_items_df: pd.DataFrame) -> pd.DataFrame:
     copied_order_items_df['shipping_limit_date'] = pd.to_datetime(copied_order_items_df['shipping_limit_date'], format="%Y-%m-%d %H:%M:%S", errors='coerce')
 
     return copied_order_items_df
-    
+
+def transform_reviews(reviews_df: pd.DataFrame) -> pd.DataFrame:
+    """Transform reviews dataset
+
+    Args:
+        reviews_df (pd.DataFrame): original review dataframe
+
+    Returns:
+        pd.DataFrame: transformed copied review dataframe
+    """
+    # Copy original dataframe
+    copied_reviews_df = reviews_df.copy()
+
+    # Change timestamp datatype from str to datetime
+    change_timestamp_columns = [
+        'review_creation_date',
+        'review_answer_timestamp'
+    ]
+
+    for column in change_timestamp_columns:
+        copied_reviews_df[column] = pd.to_datetime(copied_reviews_df[column], format="%Y-%m-%d %H:%M:%S", errors='coerce')
+
+    return copied_reviews_df

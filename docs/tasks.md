@@ -166,3 +166,12 @@ Let's move to olist_products_dataset.
 - [x] Missing values.
 - [x] Duplicate rows.
 - [x] Zero or negative values in payment_sequential, payment_installments, and payment_value.
+
+# Task 15 — Build transform_reviews()
+
+- [x] Accept a Pandas DataFrame.
+- [x] Copy the original DataFrame.
+- [x] Convert review_creation_date to datetime.
+- [x] Convert review_answer_timestamp to datetime.
+- [x] Preserve missing values.
+- [x] Return the transformed DataFrame.
