@@ -196,3 +196,7 @@ Let's move to olist_products_dataset.
 - [x] Missing IDs are detected.
 - [x] Missing statuses are detected.
 - [x] Unexpected statuses are detected.
+
+# TASK 17 - Postgresql setup and table creation
+
+- [x] create tables with relationship using er diagram.
