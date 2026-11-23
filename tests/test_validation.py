@@ -1,4 +1,5 @@
-from tests.input_datas import sample_orders_df, sample_orders_df_for_duplicate_orders
+from tests.input_datas import \
+    sample_orders_df, sample_orders_df_for_duplicate_orders, sample_orders_df_for_missing_order_and_customer
 import pandas as pd
 from src.validate import validate_orders
 
@@ -26,3 +27,12 @@ def test_duplicate_order_validate_orders_func(sample_orders_df_for_duplicate_ord
 
     assert result['any_duplicates_orders_id'] is True
 
+def test_missing_order_and_customers_validate_orders_func(sample_orders_df_for_missing_order_and_customer):
+    """
+    Verify both missing-value checks detect the problem.
+    """
+
+    result = validate_orders(sample_orders_df_for_missing_order_and_customer)
+
+    assert result['null_order_id'] is True
+    assert result['null_customer_id'] is True

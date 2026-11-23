@@ -1,6 +1,12 @@
 import pandas as pd
-from src.transform import transform_orders, transform_order_items, transform_reviews
-from tests.input_datas import sample_orders_df, sample_missing_timestamp_orders_df, sample_order_items_df, sample_missing_timestamps_order_items_df, sample_review_df,sample_missing_timestamp_review_df
+from src.transform import \
+    transform_orders, \
+    transform_order_items, \
+    transform_reviews
+from tests.input_datas import \
+    sample_orders_df, \
+    sample_missing_timestamp_orders_df, sample_order_items_df, sample_missing_timestamps_order_items_df, sample_review_df, \
+    sample_missing_timestamp_review_df
 
 # Orders DataFrame Unit tests
 def test_transform_does_not_modify_original_df(sample_orders_df):
