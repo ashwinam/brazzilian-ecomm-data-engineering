@@ -31,7 +31,7 @@ def main():
         port=int(os.environ["DB_PORT"]),
         database=os.environ["DB_NAME"]
     )
-
+    engine = None
     try:
         engine = get_engine(db_url)
         logging.info("connecting dataset folder")
