@@ -4,8 +4,12 @@ import pathlib as pl
 from sqlalchemy import URL
 from extract import extract_all_datasets
 from transform import transform_orders, transform_order_items, transform_reviews
+from validate import validate_orders
 from load import load 
 from database import clear_table, get_engine
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # 1. Create the 'logs' folder if it doesn't exist
 os.makedirs("logs", exist_ok=True)
@@ -19,20 +23,21 @@ logging.basicConfig(
 
 def main():
     """
-    Orchestrates the extraction and transformation pipeline.
+    Orchestrates the ETL  pipeline.
     """
     logging.debug("Process starts")
-    # connecting engine
-    db_url = URL.create(
-        drivername="postgresql+psycopg",
-        username=os.environ["DB_USER"],
-        password=os.environ["DB_PASSWORD"],
-        host=os.environ["DB_HOST"],
-        port=int(os.environ["DB_PORT"]),
-        database=os.environ["DB_NAME"]
-    )
+    
     engine = None
     try:
+        # connecting engine
+        db_url = URL.create(
+            drivername="postgresql+psycopg",
+            username=os.environ["DB_USER"],
+            password=os.environ["DB_PASSWORD"],
+            host=os.environ["DB_HOST"],
+            port=int(os.environ["DB_PORT"]),
+            database=os.environ["DB_NAME"]
+        )
         engine = get_engine(db_url)
         logging.info("connecting dataset folder")
         # creating path object and pass it to extract all datasets
@@ -54,6 +59,9 @@ def main():
         logging.info("Transforming reviews.")
         reviews_df = dataframes['olist_order_reviews_dataset']
         transformed_reviews_df = transform_reviews(reviews_df)
+
+        # validate orders
+        validate_orders(orders_df)
 
         # Load the final results to sql
         final_load = {
@@ -89,7 +97,7 @@ def main():
                 logging.info(f"{key} is now processing...")
                 load(value, conn, key)
     except Exception:
-        logging.exception(f"pipeline failed.")
+        logging.exception("pipeline failed.")
         raise
     finally:
         if engine is not None:
