@@ -192,7 +192,7 @@ Let's move to olist_products_dataset.
 ### part B - write pytest test for validate_orders()
 
 - [x] Valid data passes
-- [ ] Duplicate order IDs are detected.
+- [x] Duplicate order IDs are detected.
 - [ ] Missing IDs are detected.
 - [ ] Missing statuses are detected.
 - [ ] Unexpected statuses are detected.

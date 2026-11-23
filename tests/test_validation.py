@@ -1,4 +1,4 @@
-from tests.input_datas import sample_orders_df
+from tests.input_datas import sample_orders_df, sample_orders_df_for_duplicate_orders
 import pandas as pd
 from src.validate import validate_orders
 
@@ -16,4 +16,13 @@ def test_validate_orders_valid_data(sample_orders_df):
     assert result['any_duplicates_orders_id'] is False
     assert result['validate_order_statuses'] is True 
     assert result['null_order_status'] is False
-    
+
+def test_duplicate_order_validate_orders_func(sample_orders_df_for_duplicate_orders):
+    """
+    Verify that any_duplicates_orders_id is True.
+    """
+
+    result = validate_orders(sample_orders_df_for_duplicate_orders)
+
+    assert result['any_duplicates_orders_id'] is True
+
