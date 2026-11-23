@@ -5,12 +5,14 @@ from sqlalchemy import URL
 from extract import extract_all_datasets
 from transform import transform_orders, transform_order_items, transform_reviews
 from load import load 
-from database import get_engine
+from database import clear_table, get_engine
+
+# 1. Create the 'logs' folder if it doesn't exist
+os.makedirs("logs", exist_ok=True)
 
 # Logging module configuration
-
 logging.basicConfig(
-    filename='pipeline.log', 
+    filename='logs/pipeline.log', 
     level=logging.DEBUG, 
     format='%(asctime)s | %(levelname)s | %(message)s'
     )
@@ -67,7 +69,22 @@ def main():
         }
 
         logging.info("Loading transformed dataframes into sql table.")
+        delete_order = [
+            'order_reviews',
+            'order_payments',
+            'order_items',
+            'orders',
+            'geolocation',
+            'category_translation',
+            'sellers',
+            'products',
+            'customers'
+        ]
         with engine.begin() as conn:
+            # clear the tables
+            for table in delete_order:
+                clear_table(conn, table)
+            # load the data into tables
             for key, value in final_load.items():
                 logging.info(f"{key} is now processing...")
                 load(value, conn, key)

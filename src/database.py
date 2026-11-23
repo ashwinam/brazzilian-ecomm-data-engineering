@@ -1,6 +1,8 @@
 from sqlalchemy import URL, create_engine, Engine, text
 from dotenv import load_dotenv
+from sqlalchemy.engine import Connection
 import os
+import logging
 
 load_dotenv()
 
@@ -16,6 +18,11 @@ def get_engine(db_uri: str) -> Engine:
         Engine: sqlalchemy engine
     """
     return create_engine(db_uri)
+
+def clear_table(con: Connection, table: str):
+    logging.info(f"Deleting records from {table}")
+    con.execute(text(f'DELETE FROM {table}'))
+    logging.info(f"Deleting records from {table}")
 
 if __name__ == '__main__':
     db_url = URL.create(
