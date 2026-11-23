@@ -56,6 +56,12 @@ cover/
 *.mo
 *.pot
 
+# Airflow generated files
+airflow/logs/*
+airflow/config/*
+airflow/plugins/__pycache__/
+airflow/dags/__pycache__/
+
 # Django stuff:
 *.log
 local_settings.py
