@@ -2,7 +2,8 @@ from tests.input_datas import \
     sample_orders_df, \
     sample_orders_df_for_duplicate_orders,\
     sample_orders_df_for_missing_order_and_customer, \
-    sample_orders_df_for_missing_order_status
+    sample_orders_df_for_missing_order_status, \
+    sample_orders_df_for_unexpected_order_status
 import pandas as pd
 from src.validate import validate_orders
 
@@ -48,3 +49,12 @@ def test_missing_order_status_validate_orders_func(sample_orders_df_for_missing_
     result = validate_orders(sample_orders_df_for_missing_order_status)
 
     assert result['null_order_status'] is True
+
+def test_unexpected_status_validate_orders_func(sample_orders_df_for_unexpected_order_status):
+    """
+    Unexpected order status
+    """
+
+    result = validate_orders(sample_orders_df_for_unexpected_order_status)
+
+    assert result ['validate_order_statuses'] is False
