@@ -1,0 +1,12 @@
+import pandas as pd
+from sqlalchemy import Engine
+
+def load(df: pd.DataFrame, engine: Engine, table_name: str) -> None:
+    """Write the data into sql table using pandas dataframe.
+
+    Args:
+        df (pd.DataFrame): panda dataframe that load into sql table
+        engine (Engine): sqlalachemy engine
+        table_name (str): table name for storing data
+    """
+    df.to_sql(name=table_name, con=engine, index=False, if_exists='append')

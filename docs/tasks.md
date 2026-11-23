@@ -208,3 +208,10 @@ Let's move to olist_products_dataset.
 - [x] create .env file and add variables
 - [x] create database.py for reusable connections
 - [x] create engine and test it
+
+# Task 19 - Load the datasets
+
+- [x] Use your existing extraction logic to get the customers DataFrame.
+- [x] Use the SQLAlchemy engine to load that DataFrame into the existing PostgreSQL customers table.
+- [x] Make sure the load does not recreate or overwrite the table.
+- [x] Verify that the records were inserted successfully.
