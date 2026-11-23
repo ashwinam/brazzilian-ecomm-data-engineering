@@ -188,3 +188,11 @@ Let's move to olist_products_dataset.
     - identify any unexpected statuses
 - [x] return validation result
     - create a dictionary and return the results
+
+### part B - write pytest test for validate_orders()
+
+- [x] Valid data passes
+- [ ] Duplicate order IDs are detected.
+- [ ] Missing IDs are detected.
+- [ ] Missing statuses are detected.
+- [ ] Unexpected statuses are detected.
