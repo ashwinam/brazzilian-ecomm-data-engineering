@@ -1,5 +1,8 @@
 from tests.input_datas import \
-    sample_orders_df, sample_orders_df_for_duplicate_orders, sample_orders_df_for_missing_order_and_customer
+    sample_orders_df, \
+    sample_orders_df_for_duplicate_orders,\
+    sample_orders_df_for_missing_order_and_customer, \
+    sample_orders_df_for_missing_order_status
 import pandas as pd
 from src.validate import validate_orders
 
@@ -36,3 +39,12 @@ def test_missing_order_and_customers_validate_orders_func(sample_orders_df_for_m
 
     assert result['null_order_id'] is True
     assert result['null_customer_id'] is True
+
+def test_missing_order_status_validate_orders_func(sample_orders_df_for_missing_order_status):
+    """
+    Verify null_order_status is True.
+    """
+
+    result = validate_orders(sample_orders_df_for_missing_order_status)
+
+    assert result['null_order_status'] is True

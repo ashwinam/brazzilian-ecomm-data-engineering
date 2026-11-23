@@ -194,5 +194,5 @@ Let's move to olist_products_dataset.
 - [x] Valid data passes
 - [x] Duplicate order IDs are detected.
 - [x] Missing IDs are detected.
-- [ ] Missing statuses are detected.
+- [x] Missing statuses are detected.
 - [ ] Unexpected statuses are detected.
