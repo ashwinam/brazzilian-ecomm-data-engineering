@@ -8,5 +8,8 @@ dependencies = [
     "jupyter>=1.1.1",
     "notebook>=7.6.5",
     "pandas>=3.1.1",
+    "psycopg[binary]>=3.3.9",
     "pytest>=9.2.0",
+    "python-dotenv>=1.2.4",
+    "sqlalchemy>=2.1.9",
 ]

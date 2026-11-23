@@ -200,3 +200,11 @@ Let's move to olist_products_dataset.
 # TASK 17 - Postgresql setup and table creation
 
 - [x] create tables with relationship using er diagram.
+
+# TASK 18 - connecting python to postgresql
+
+- [x] setup sqlalchemy and psycopg
+- [x] install dependency
+- [x] create .env file and add variables
+- [x] create database.py for reusable connections
+- [x] create engine and test it
