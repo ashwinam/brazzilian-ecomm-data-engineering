@@ -67,14 +67,16 @@ def main():
         }
 
         logging.info("Loading transformed dataframes into sql table.")
-        for key, value in final_load.items():
-            logging.info(f"{key} is now processing...")
-            load(value, engine, key)
-    except Exception as e:
+        with engine.begin() as conn:
+            for key, value in final_load.items():
+                logging.info(f"{key} is now processing...")
+                load(value, conn, key)
+    except Exception:
         logging.exception(f"pipeline failed.")
         raise
     finally:
-        engine.dispose()
+        if engine is not None:
+            engine.dispose()
 
     logging.info("Pipeline completed successfully.")
 
