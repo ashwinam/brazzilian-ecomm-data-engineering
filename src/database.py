@@ -7,8 +7,15 @@ load_dotenv()
 # postgresql://user:password@host:5432/dbname	5432
 
 def get_engine(db_uri: str) -> Engine:
-    engine = create_engine(db_uri)
-    return engine
+    """create the postgresql connection and return engine
+
+    Args:
+        db_uri (str): takes as an db_uri
+
+    Returns:
+        Engine: sqlalchemy engine
+    """
+    return create_engine(db_uri)
 
 if __name__ == '__main__':
     db_url = URL.create(
