@@ -37,17 +37,23 @@ def main():
     reviews_df = dataframes['olist_order_reviews_dataset']
     transformed_reviews_df = transform_reviews(reviews_df)
 
-    # Load customer dataframe into sql
-    customers_df = dataframes['olist_customers_dataset']
-    load(customers_df, engine, 'customers')
-
-    transformed_dataframes = {
-        'olist_orders_dataset': transformed_orders,
-        'olist_order_items_dataset': transformed_order_items,
-        'olist_order_reviews_dataset': transformed_reviews_df
+    # Load the final results to sql
+    final_load = {
+        'customers': dataframes['olist_customers_dataset'],
+        'products': dataframes['olist_products_dataset'],
+        'sellers': dataframes['olist_sellers_dataset'],
+        'category_translation': dataframes['product_category_name_translation'],
+        'geolocation': dataframes['olist_geolocation_dataset'],
+        'orders': transformed_orders,
+        'order_items': transformed_order_items,
+        'order_payments': dataframes['olist_order_payments_dataset'],
+        "order_reviews": transformed_reviews_df
     }
 
-    return transformed_dataframes
+    for key, value in final_load.items():
+        load(value, engine, key)
+
+    return None
 
 if __name__ == '__main__':
     main()
