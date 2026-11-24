@@ -61,6 +61,7 @@ airflow/logs/*
 airflow/config/*
 airflow/plugins/__pycache__/
 airflow/dags/__pycache__/
+airflow/data/*
 
 # Django stuff:
 *.log
