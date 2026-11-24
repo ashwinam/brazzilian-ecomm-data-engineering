@@ -161,22 +161,25 @@ brazilian-ecomm-data-engineering/
 └── README.md
 ```
 
-## Getting Started
+# Now here you have 2 options
+## Version 1 - Below is for v1, that uses script to execute etl pipeline
 
-### Prerequisites
+### Getting Started
+
+#### Prerequisites
 
 - Python 3.10+
 - PostgreSQL
 - Olist dataset CSV files
 
-### 1. Clone the repository
+#### 1. Clone the repository
 
 ```bash
 git clone https://github.com/ashwinam/brazzilian-ecomm-data-engineering.git
 cd brazilian-ecomm-data-engineering
 ```
 
-### 2. Create and activate a virtual environment and install dependencies
+#### 2. Create and activate a virtual environment and install dependencies
 
 ```bash
 pip install uv
@@ -189,7 +192,7 @@ uv sync
 source .venv/bin/activate
 ```
 
-### 3. Configure environment variables
+#### 3. Configure environment variables
 
 Create a `.env` file in the project root:
 >already provided an .env.example you can use that
@@ -204,11 +207,11 @@ DB_PASSWORD=your_password
 
 Do not commit your `.env` file or expose database credentials.
 
-### 4. Prepare PostgreSQL
+#### 4. Prepare PostgreSQL
 
 Create the database and configure the nine tables with the required columns, primary keys, and foreign key relationships.
 
-### 5. Add the dataset
+#### 5. Add the dataset
 
 Place all nine Olist CSV files inside:
 
@@ -216,7 +219,7 @@ Place all nine Olist CSV files inside:
 datasets/brazilian-ecommerce/
 ```
 
-### 6. Run the pipeline
+#### 6. Run the pipeline
 
 From the project root:
 
@@ -226,19 +229,89 @@ python src/main.py
 
 The pipeline extracts the CSV files, transforms the required datasets, and performs a full refresh of the PostgreSQL tables.
 
-### 7. Run tests
+#### 7. Run tests
 
 ```bash
 pytest
 ```
 
-## Future Improvements — Version 2
+##  Version 2 - For apache-airflow
+## Apache Airflow – Workflow Orchestration (V2)
 
-The next iteration will focus on orchestration and scalability:
+### Why Apache Airflow?
 
-- Integrate Apache Airflow 2 for workflow orchestration.
-- Define task dependencies and scheduling through DAGs.
-- Implement retries and failure monitoring.
+Imagine an e-commerce company that needs to refresh its orders, payments, customers, and product data every day for reporting and analytics.
+
+Running individual Python scripts manually becomes difficult to manage as the pipeline grows. We need a way to orchestrate tasks, manage dependencies, handle failures, and monitor executions.
+
+To address this, I extended the existing ETL pipeline using **Apache Airflow**.
+
+### Pipeline Workflow
+
+The pipeline is orchestrated through an Airflow DAG with four tasks:
+
+```text
+Extract → Transform → Validate → Load
+```
+
+- **Extract:** Reads the source CSV files and stores the extracted datasets.
+- **Transform:** Applies the existing transformation logic.
+- **Validate:** Performs data quality checks before loading.
+- **Load:** Loads the processed datasets into PostgreSQL.
+
+Each stage runs as an independent Airflow task. Downstream tasks execute only when their upstream dependencies succeed. Airflow also provides task-level logs, retries, and execution monitoring.
+
+>For more information about setup and architecture just go through `docs/airflow-architecture.md`
+
+### Running the Airflow Pipeline
+
+Airflow and its dependencies are already configured in this repository using Docker Compose.
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/ashwinam/brazzilian-ecomm-data-engineering.git
+cd brazzilian-ecomm-data-engineering
+```
+
+**2. Start Airflow**
+
+```bash
+cd airflow
+docker compose up -d
+```
+
+**3. Open the Airflow UI**
+
+Visit [http://localhost:8080](http://localhost:8080).
+
+Use the configured local credentials:
+
+```text
+Username: airflow
+Password: airflow
+```
+
+**4. Run the pipeline**
+
+- Find the Olist ETL DAG in the Airflow UI.
+- Enable it if it is paused.
+- Trigger a DAG run.
+- Monitor the execution of each task and inspect logs when needed.
+
+**5. Stop Airflow**
+
+```bash
+docker compose down
+```
+
+### Key Learnings
+
+- Orchestrating an existing ETL pipeline using Apache Airflow.
+- Creating DAGs and defining task dependencies.
+- Understanding task execution, retries, and failure handling.
+- Passing metadata between tasks using XCom.
+- Running a multi-service Airflow environment using Docker Compose.
 
 ## Learning Outcomes
 
